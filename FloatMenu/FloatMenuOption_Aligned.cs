@@ -28,7 +28,7 @@ namespace FluffyUI.FloatMenu
             string label,
             Action action,
             MenuOptionPriority priority = MenuOptionPriority.Default,
-            Action mouseoverGuiAction = null,
+            Action<UnityEngine.Rect> mouseoverGuiAction = null,
             Thing revalidateClickTarget = null,
             float extraPartWidth = 0,
             Func<Rect, bool> extraPartOnGUI = null,
@@ -81,7 +81,7 @@ namespace FluffyUI.FloatMenu
             if (!Disabled)
                 MouseoverSounds.DoRegion( optionRect );
             if ( hovered )
-                mouseoverGuiAction?.Invoke();
+                mouseoverGuiAction?.Invoke(canvas);
             if ( !tutorTag.NullOrEmpty() )
                 UIHighlighter.HighlightOpportunity( canvas, tutorTag );
 
